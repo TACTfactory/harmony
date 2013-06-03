@@ -1,6 +1,5 @@
-/www/*
-/bin/*
-/vendor/*
+/app/*
+
 /fixtures
 
 /.classpath
@@ -8,4 +7,3 @@
 /local.properties
 
 .settings/*
-/app/*
