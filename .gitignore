@@ -1,0 +1,11 @@
+/www/*
+/bin/*
+/vendor/*
+/fixtures
+
+/.classpath
+/.project
+/local.properties
+
+.settings/*
+/app/*
