@@ -1,8 +1,6 @@
 README
 ======
 
-[![Build Status](https://support.tactfactory.com/projects/harmony/hudson/index?branch=master)](https://support.tactfactory.com/projects/harmony/hudson/index)
-
 What is Harmony?
 -----------------
 
@@ -45,9 +43,9 @@ Running Harmony Tests
 Information on how to run the Harmony test suite can be found in the
 [Running Harmony Tests][6] section.
 
-[1]: https://support.tactfactory.com/projects/harmony
+[1]: https://support.tactfactory.com/projects/harmony/wiki
 [2]: https://support.tactfactory.com/projects/harmony/wiki/Quick_start
 [3]: https://support.tactfactory.com/projects/harmony/wiki/En
 [4]: https://support.tactfactory.com/projects/harmony/wiki/contributing
-[5]: https://support.tactfactory.com/projects/harmony/wiki/patches
-[6]: https://support.tactfactory.com/projects/harmony/wiki/tests
+[5]: https://support.tactfactory.com/projects/harmony/
+[6]: https://support.tactfactory.com/projects/harmony/
