@@ -20,7 +20,7 @@ Installation
 ------------
 
 The best way to install Harmony is to download the Harmony Standard Edition
-available at [https://support.tactfactory.com/projects/harmony/wiki][1].
+available at [wiki][1].
 
 Documentation
 -------------
@@ -43,8 +43,8 @@ Running Harmony Tests
 Information on how to run the Harmony test suite can be found in the
 [Running Harmony Tests][6] section.
 
-[1]: https://support.tactfactory.com/projects/harmony/wiki
-[2]: https://support.tactfactory.com/projects/harmony/wiki/Quick_start
+[1]: https://support.tactfactory.com/projects/harmony/wiki/En
+[2]: https://support.tactfactory.com/projects/harmony/wiki/Getting_Started
 [3]: https://support.tactfactory.com/projects/harmony/wiki/En
 [4]: https://support.tactfactory.com/projects/harmony/wiki/contributing
 [5]: https://support.tactfactory.com/projects/harmony/
