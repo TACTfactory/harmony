@@ -9,7 +9,7 @@ flexibility in mind. It allows developers to build better and easy to maintain
 native mobile application.
 
 Harmony can be used to develop all kind of Mobile application, from your personal app
-to high traffic ones! Answers.
+to high traffic!
 
 Requirements
 ------------
