@@ -1,7 +1,6 @@
 [submodule "vendor/tact-core"]
 	path = vendor/tact-core
 	url = ssh://git@git.tactfactory.com:2222/harmony/tact-mda.git
-    branch = master
 [submodule "vendor/tact-rest"]
 	path = vendor/tact-rest
 	url = ssh://git@git.tactfactory.com:2222/harmony/harmony_bundle_rest.git
