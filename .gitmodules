@@ -1,6 +1,6 @@
 [submodule "vendor/tact-core"]
 	path = vendor/tact-core
-	url = git@github.com:TACTfactory/harmony-core.git
+	url = https://github.com/TACTfactory/harmony-core.git
 [submodule "vendor/tact-rest"]
 	path = vendor/tact-rest
-	url = git@github.com:TACTfactory/harmony-bundle-rest.git
+	url = https://github.com/TACTfactory/harmony-bundle-rest.git
