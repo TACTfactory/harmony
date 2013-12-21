@@ -1,31 +1,16 @@
 # pull all repot
 
-cd vendor/tact-core
-git checkout dev
-git pull origin dev
-cd ../..
+FOLDERS=`ls -d vendor/*/`
+BRANCH="master"
+REMOTE="origin"
 
-cd vendor/tact-rest
-git checkout dev
-git pull origin dev
-cd ../..
-
-cd vendor/tact-search
-git checkout dev
-git pull origin dev
-cd ../..
-
-cd vendor/tact-social
-git checkout dev
-git pull origin dev
-cd ../..
-
-cd vendor/tact-symfony
-git checkout dev
-git pull origin dev
-cd ../..
-
-cd vendor/tact-sync
-git checkout dev
-git pull origin dev
-cd ../..
+for FILE in $FOLDERS
+do
+	echo "Process $FILE bundle"
+	echo "================================================================"
+	cd $FILE
+	git fetch --all
+	git checkout $BRANCH
+	git pull $REMOTE $BRANCH
+	cd ../..
+done
