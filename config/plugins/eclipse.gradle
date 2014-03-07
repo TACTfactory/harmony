@@ -1,0 +1,28 @@
+project(':vendor') {
+    /** Configure all bundles. */
+    subprojects {
+        apply plugin: 'eclipse'
+        
+        configurations {
+            outputDirs
+        }
+        
+        dependencies {
+            outputDirs project(':vendor:tact-core').sourceSets.test.output
+        }
+        
+        eclipse {
+            classpath {
+                minusConfigurations.add(configurations.outputDirs)
+            }
+        }
+        
+        eclipse.classpath.file {
+            whenMerged { classpath ->
+                classpath.entries.removeAll { entry ->
+                    entry.kind == 'src' && entry.path == 'src' && entry.includes.contains('**/test/**')
+                }
+            }
+        }
+    }
+}

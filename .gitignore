@@ -1,14 +1,20 @@
-/app/*
-/fixtures
-
+# Eclipse files
 /.classpath
 /.project
+.settings/*
+/bin
+
+# Gradle files
+.gradle/
+build/
+
+# Harmony generated files
+/app/*
+/fixtures
+/vendor/name-test
+
+# Others
 /local.properties
 
-.settings/*
-
+# Exclude some files
 !/app/README.md
-
-
-/bin
-/vendor/name-test

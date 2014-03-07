@@ -1,0 +1,30 @@
+project(':vendor') {
+    /** Configure all bundles. */
+    subprojects {
+        jar {
+            /** Collect all files in lib bundle folder
+                to add them to classpath manifest.*/
+            def manifestCp = configurations.runtime.files.collect {
+                File file = it
+                "lib/${file.name}"
+            }.join(' ')
+            
+            manifest {
+                attributes 'Manifest-Version': version,
+                    'Implementation-Version': version,
+                    'Class-Path': manifestCp
+            }
+            
+            /** Copy bundle jar file to root bundles directory. */
+            doLast{
+                copy {
+                    from new File(project.buildDir, 'libs')
+                    into project.projectDir
+                    include '*.jar'
+                    exclude '*-annotations*.jar'
+                    rename '(.*)-[\0-9]*(.jar)', '$1$2'
+                }
+            }
+        }
+    }
+}
