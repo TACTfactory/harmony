@@ -1,10 +1,10 @@
-//apply plugin: 'java'
-//apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'eclipse'
 
 /** Configure all projects. */
 allprojects {
     group = 'com.tactfactory.harmony'
-    version = '0.6.4'
+    version = '0.7.0'
 }
 
 buildscript {
@@ -58,13 +58,29 @@ project(':vendor') {
     }
 }
 
+dependencies {
+    /** Add all jar from lib directory of all bundles to classpath. */
+    compile fileTree(dir: 'vendor', include: '**/lib/*.jar')
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = project(':vendor').subprojects.collect {
+                new File(it.projectDir, 'src')
+            }
+        }
+    }
+}
+
 apply from: 'config/plugins/jar.gradle'
 apply from: 'config/plugins/javadoc.gradle'
 apply from: 'config/plugins/emma.gradle'
 apply from: 'config/plugins/reports.gradle'
-apply from: 'config/plugins/eclipse.gradle'
 
-/*dependencies {
-    runtime project(':vendor:tact-core')
-    runtime project(':vendor:tact-rest')
-}*/
+/** Override build to task, on root project, to do nothing. */
+build << {  }
+check.dependsOn -= build
+task build(overwrite: true) << {  }
+check.dependsOn += build
+
