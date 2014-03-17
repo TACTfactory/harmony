@@ -45,6 +45,11 @@ project(':vendor') {
                 }
             }
         }
+
+        /** Test SuiteClasses. */
+        test {
+            include '**/test/AllTests*'
+        }
     }
     
     /** Apply configuration for all bundles except 'tact-core'. */
