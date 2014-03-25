@@ -2,21 +2,13 @@ project(':vendor') {
     /** Configure all bundles. */
     subprojects {
         jar {
-            /** Collect all files in lib bundle folder
-                to add them to classpath manifest.*/
-            def manifestCp = configurations.runtime.files.collect {
-                File file = it
-                "lib/${file.name}"
-            }.join(' ')
-            
             manifest {
                 attributes 'Manifest-Version': version,
-                    'Implementation-Version': version,
-                    'Class-Path': manifestCp
+                    'Implementation-Version': version
             }
             
             /** Copy bundle jar file to root bundles directory. */
-            doLast{
+            doLast {
                 copy {
                     from new File(project.buildDir, 'libs')
                     into project.projectDir
@@ -26,5 +18,34 @@ project(':vendor') {
                 }
             }
         }
+
+        task assembleManifestClasspath {
+            doLast {
+                jar {
+                    manifest {
+                        attributes("Class-Path": configurations.compile.collect {
+                            String result = ".";
+                            
+                            File abs = it.getAbsoluteFile();
+                            File workingDir = rootProject.projectDir;
+                            
+                            URI resultString = workingDir.toURI().relativize(abs.toURI());
+                            
+                            if (!resultString.toString().equals("")) {
+                                result = resultString.toString();
+                            }
+                            
+                            if (result.startsWith("file:")) {
+                                result = result.substring("file:".length());
+                            }
+                            
+                            result = result.replace("vendor/", "../")
+                        }.join(' '))
+                    }
+                }
+            }
+        }
+        
+        jar.dependsOn assembleManifestClasspath
     }
 }
