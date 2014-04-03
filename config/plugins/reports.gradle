@@ -5,7 +5,7 @@ project(':vendor') {
         apply plugin: 'checkstyle'
         apply plugin: 'pmd'
         apply plugin: 'jdepend'
-        
+		
         findbugsMain {
             ignoreFailures = true
             excludeFilter = new File(
@@ -39,5 +39,52 @@ project(':vendor') {
         pmdTest {
             ignoreFailures = true
         }
+
+		task cpdMain(dependsOn: 'pmdMain') {
+			ext.ignoreFailures = true
+
+			doLast {
+				File outDir = new File(reporting.baseDir, 'cpd/')
+				// Make sure the output dir exists to prevent a ReportException
+				outDir.mkdirs()
+
+				ant.taskdef(name: 'cpd', classname: 'net.sourceforge.pmd.cpd.CPDTask',
+				        classpath: configurations.pmd.asPath)
+
+				ant.cpd(minimumTokenCount: '100', format: 'xml',
+					outputFile: new File(outDir , 'main.xml')) {
+					fileset(dir: projectDir.getPath()) {
+		          		sourceSets.main.java.each { sourceDir ->
+		            		include(name: project.relativePath(sourceDir.getPath()))
+		      			}
+		        	}
+				}
+			}
+		}
+
+		task cpdTest(dependsOn: 'pmdTest') {
+			ext.ignoreFailures = true
+
+			doLast {
+				File outDir = new File(reporting.baseDir, 'cpd/')
+				// Make sure the output dir exists to prevent a ReportException
+				outDir.mkdirs()
+
+				ant.taskdef(name: 'cpd', classname: 'net.sourceforge.pmd.cpd.CPDTask',
+				        classpath: configurations.pmd.asPath)
+
+				ant.cpd(minimumTokenCount: '100', format: 'xml',
+					outputFile: new File(outDir , 'test.xml')) {
+					fileset(dir: projectDir.getPath()) {
+		          		sourceSets.main.java.each { sourceDir ->
+		            		include(name: project.relativePath(sourceDir.getPath()))
+		      			}
+		        	}
+				}
+			}
+		}
+
+		check.dependsOn cpdMain
+		check.dependsOn cpdTest
     }
 }
