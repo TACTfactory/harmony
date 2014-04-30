@@ -3,7 +3,7 @@
 FOLDERS=`ls -d vendor/*/`
 
 cd vendor/tact-core
-ant buildall
+gradlew jar
 cd ../..
 
 for FILE in $FOLDERS
@@ -11,6 +11,6 @@ do
 	echo "Process $FILE bundle"
 	echo "================================================================"
 	cd $FILE
-	ant buildall
+	gradlew jar
 	cd ../..
 done
