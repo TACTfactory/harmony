@@ -30,6 +30,11 @@ project(':vendor') {
             /** Add all jar from lib directory to classpath. */
             compile fileTree(dir: 'lib', include: '*.jar')
         }
+        
+        ext {
+            sourceCompatibility = 1.7
+            targetCompatibility = 1.7
+        }
 
         sourceSets {
             main {
