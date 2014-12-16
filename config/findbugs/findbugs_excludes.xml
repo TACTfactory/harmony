@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <Match>
+    <Class name="com.tactfactory.harmony.Context"/>
+    <Bug pattern="DM_EXIT" />
+  </Match>
+  <Match>
+    <Class name="com.tactfactory.harmony.test.demact.entity.SimpleEntity"/>
+    <Bug pattern="UUF_UNUSED_FIELD" />
+  </Match>
+</FindBugsFilter>

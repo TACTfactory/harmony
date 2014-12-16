@@ -1,0 +1,15 @@
+project(':vendor') {
+    /** Configure all bundles. */
+    subprojects {
+        javadoc {
+            /** Copy javadoc to root bundles directory. */
+            doLast {
+                delete new File(project.buildDir, 'javadoc')
+                copy {
+                    from new File(project.buildDir, 'docs/javadoc')
+                    into new File(project.buildDir, 'javadoc')
+                }
+            }
+        }
+    }
+}

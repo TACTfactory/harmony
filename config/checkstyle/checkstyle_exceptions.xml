@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+    "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+    <suppress 	checks="." 
+		files="com[\\/]tactfactory[\\/]harmony[\\/]test[\\/]demact[\\/]"/>
+    <suppress 	checks="." 
+		files="com[\\/]tactfactory[\\/]harmony[\\/]test[\\/]jobeet[\\/]"/>
+    <suppress 	checks="DesignForExtension"
+		files="BaseAdapter.java"/>
+    <suppress 	checks="DesignForExtension"
+		files="BaseGenerator.java"/>
+    <suppress 	checks="DesignForExtension"
+		files="BaseCommand.java"/>
+</suppressions>

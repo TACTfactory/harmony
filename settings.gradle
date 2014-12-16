@@ -1,0 +1,7 @@
+//include all project in vendor folder (check if build.gradle file exists)
+include 'vendor'
+include new File('./vendor').listFiles().findAll { 
+     it.isDirectory() && new File(it.getAbsolutePath() + "/build.gradle").exists()
+    }.collect { 
+        'vendor:' + it.getName()
+    }.toArray(new java.lang.String[0])
