@@ -1,0 +1,29 @@
+project(':vendor') {
+    /** Configure all bundles. */
+    subprojects {
+        apply plugin: 'jacoco'
+        
+        repositories {
+            mavenCentral()
+        }
+        
+        jacocoTestReport {
+            reports {
+                xml.enabled = false
+                csv.enabled = false
+                html.enabled = true
+                html.destination "${buildDir}/reports/jacoco"
+            }
+        }
+        
+        test {
+            jacoco {
+                toolVersion = "0.7.0.201403182114"
+                println "Instrumenting the classes at " + sourceSets.main.output.classesDir.absolutePath
+                includes = ['**/*.class']
+                destinationFile = file("$buildDir/reports/jacoco/jacocoTest.exec")
+                classDumpFile = file("$buildDir/reports/jacoco/classpathdumps")
+            }
+        }
+    }
+}
