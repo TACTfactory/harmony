@@ -11,9 +11,6 @@ buildscript {
     repositories {
         flatDir name: 'libs', dirs: "./config/plugins"
     }
-    dependencies {
-        classpath 'com.tactfactory:emma:1.0'
-    }
 }
 
 project(':vendor') {
