@@ -94,6 +94,5 @@ sourceSets {
 
 apply from: 'config/plugins/jar.gradle'
 apply from: 'config/plugins/javadoc.gradle'
-//apply from: 'config/plugins/emma.gradle'
 apply from: 'config/plugins/jacoco.gradle'
 apply from: 'config/plugins/reports.gradle'
