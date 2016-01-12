@@ -50,6 +50,8 @@ project(':vendor') {
             include '**/test/AllTests*'
         }
         
+        test.dependsOn jar
+        
         clean << {
             FileTree tree = fileTree('./').include('*.jar')
             tree.visit {element ->
