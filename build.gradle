@@ -28,6 +28,7 @@ project(':vendor') {
         dependencies {
             /** Add all jar from lib directory to classpath. */
             compile fileTree(dir: 'lib', include: '*.jar')
+            compile 'com.google.guava:guava:20.0'
         }
 
         sourceSets {
