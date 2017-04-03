@@ -5,6 +5,10 @@ apply plugin: 'eclipse'
 allprojects {
     group = 'com.tactfactory.harmony'
     version = '0.8.0'
+    
+    repositories {
+        jcenter()
+    }
 }
 
 buildscript {
@@ -22,7 +26,7 @@ project(':vendor') {
         targetCompatibility = JavaVersion.VERSION_1_7
 
         repositories {
-            mavenCentral()
+            jcenter()
         }
 
         dependencies {
@@ -87,6 +91,13 @@ sourceSets {
             }
         }
     }
+}
+
+tasks.all {
+    task ->
+        if ((task.name.equals('compileJava'))) {
+            task.enabled = false
+        }
 }
 
 apply from: 'config/plugins/jar.gradle'
