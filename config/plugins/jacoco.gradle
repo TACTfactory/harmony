@@ -8,6 +8,8 @@ project(':vendor') {
         }
 
         jacocoTestReport {
+            description 'Run code coverage with JaCoCo.'
+            group 'Verification'
             reports {
                 xml.enabled = false
                 csv.enabled = false
