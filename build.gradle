@@ -60,7 +60,7 @@ project(':vendor') {
 
         test.dependsOn jar
 
-        clean << {
+        clean.doLast {
             FileTree tree = fileTree('./').include('*.jar')
             tree.visit {element ->
                 delete element.file
