@@ -65,7 +65,7 @@ if [%1]==[] set CMD_LINE_ARGS=list
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\$JAVAPATH:.\vendor\tact-core\harmony.jar
+set CLASSPATH=%APP_HOME%\vendor\tact-core\harmony.jar
 
 @rem Execute harmony
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %HARMONY_OPTS%  -classpath "%CLASSPATH%" com.tactfactory.harmony.Console %CMD_LINE_ARGS%

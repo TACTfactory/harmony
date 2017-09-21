@@ -64,7 +64,7 @@ case "`uname`" in
     ;;
 esac
 
-CLASSPATH="$JAVAPATH:./vendor/tact-core/harmony.jar"
+CLASSPATH="$JAVAPATH:$APP_HOME/vendor/tact-core/harmony.jar"
 
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
