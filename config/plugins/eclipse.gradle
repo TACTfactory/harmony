@@ -1,0 +1,38 @@
+apply plugin: 'eclipse'
+
+eclipse.classpath {
+    def subprojectsNames = [];
+
+    project.configurations {
+        eclipseConfiguration
+    }
+
+    project.dependencies {
+        new File('./vendor').listFiles().findAll {
+            it.isDirectory() && new File(it.getAbsolutePath() + "/build.gradle").exists()
+        }.collect {
+            subprojectsNames += "/" + it.getName()
+            eclipseConfiguration project(':vendor:' + it.getName())
+        }
+
+        eclipseConfiguration fileTree(dir: 'vendor', include: '**/lib/*.jar')
+    }
+
+    project.sourceSets {
+        main {
+            java {
+                srcDirs = project(':vendor').subprojects.collect {
+                    new File(it.projectDir, 'src')
+                }
+            }
+        }
+    }
+
+    plusConfigurations += [ configurations.eclipseConfiguration ]
+
+    file.whenMerged { classpath ->
+        classpath.entries.removeAll { entry ->
+            entry.kind == 'src' && entry.path in subprojectsNames
+        }
+    }
+}

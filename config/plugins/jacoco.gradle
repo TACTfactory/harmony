@@ -1,0 +1,21 @@
+project(':vendor') {
+    /** Configure all bundles. */
+    subprojects {
+        apply plugin: 'jacoco'
+
+        jacoco {
+            toolVersion "0.7.5.201505241946"
+        }
+
+        jacocoTestReport {
+            description 'Run code coverage with JaCoCo.'
+            group 'Verification'
+            reports {
+                xml.enabled = false
+                csv.enabled = false
+                html.enabled = true
+                html.destination "${buildDir}/reports/jacoco"
+            }
+        }
+    }
+}
